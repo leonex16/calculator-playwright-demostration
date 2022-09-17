@@ -30,6 +30,4 @@ artifacts:
   files:
     - playwright-report/index.html
     - trace.zip
-  base-directory: /
   discard-paths: yes
-  name: artifact-playwright
