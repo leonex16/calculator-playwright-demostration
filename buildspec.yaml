@@ -1,0 +1,24 @@
+version: 0.2
+
+env:
+  shell: shell-tag
+  variables:
+    CI: "true"
+        
+phases:
+  install:
+    on-failure: ABORT
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - npm i --no-audit
+  build:
+    on-failure: ABORT
+    commands:
+      - npm run build
+    finally:
+      - npm run preview
+  post_build:
+    on-failure: ABORT
+    commands:
+      - npm run test
