@@ -10,6 +10,7 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
+      - npx playwright install --with-deps
       - npm i --no-audit --no-fund
   build:
     on-failure: ABORT
