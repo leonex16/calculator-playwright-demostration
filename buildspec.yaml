@@ -10,13 +10,13 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
-      - npm i --no-audit
+      - npm i --no-audit --no-fund
   build:
     on-failure: ABORT
     commands:
       - npm run build
     finally:
-      - npm run preview
+      - npm run preview &
   post_build:
     on-failure: ABORT
     commands:
