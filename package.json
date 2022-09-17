@@ -6,12 +6,12 @@
   "scripts": {
     "phoenix": "rm -rf node_modules/ pnpm-lock.yaml && pnpm install",
     "dev": "vite",
-    "build": "vite build",
+    "build": "pnpm run css:build && vite build",
     "preview": "vite preview",
     "css:dev": "tailwindcss --watch -i ./src/index.css -o ./src/assets/index.css",
-    "css:build": "tailwindcss --minify -i ./src/index.css -o ./public/index.css",
+    "css:build": "tailwindcss --minify -i ./src/index.css -o ./src/assets/index.css",
     "test": "playwright test",
-    "test:debug": "playwright test  --debug",
+    "test:debug": "playwright test --debug",
     "test:trace": "playwright show-trace trace.zip"
   },
   "dependencies": {
@@ -43,6 +43,9 @@
       "semistandard",
       "preact",
       "plugin:playwright/playwright-test"
-    ]
+    ],
+    "rules": {
+      "jest/no-done-callback": "off"
+    }
   }
 }
