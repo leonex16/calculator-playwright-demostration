@@ -6,7 +6,7 @@
   "scripts": {
     "phoenix": "rm -rf node_modules/ pnpm-lock.yaml && pnpm install",
     "dev": "vite",
-    "build": "pnpm run css:build && vite build",
+    "build": "npm run css:build && vite build",
     "preview": "vite preview",
     "css:dev": "tailwindcss --watch -i ./src/index.css -o ./src/assets/index.css",
     "css:build": "tailwindcss --minify -i ./src/index.css -o ./src/assets/index.css",
