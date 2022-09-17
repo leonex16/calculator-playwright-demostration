@@ -31,4 +31,3 @@ artifacts:
     - playwright-report/index.html
     - trace.zip
   discard-paths: yes
-  name: .
