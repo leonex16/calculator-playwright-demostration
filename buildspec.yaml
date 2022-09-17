@@ -10,8 +10,8 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
-      - npx playwright install --with-deps chromium
       - npm i --no-audit --no-fund
+      - npx playwright install --with-deps chromium
   build:
     on-failure: ABORT
     commands:
