@@ -24,3 +24,4 @@ playwright-report
 *.sln
 *.sw?
 trace.zip
+src/assets/index.css
