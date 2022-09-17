@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test.use({ colorScheme: 'dark', headless: false });
+test.use({ colorScheme: 'dark' });
 
 test('My firstt e2e test', async ({ browser }) => {
   const context = await browser.newContext();

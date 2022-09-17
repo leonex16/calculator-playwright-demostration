@@ -38,8 +38,10 @@ const config = {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
+    headless: true,
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
@@ -47,9 +49,9 @@ const config = {
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome'],
-      },
-    },
+        ...devices['Desktop Chrome']
+      }
+    }
 
     /* Test against mobile viewports. */
     // {
@@ -78,7 +80,7 @@ const config = {
     //     channel: 'chrome',
     //   },
     // },
-  ],
+  ]
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   // outputDir: 'test-results/',
