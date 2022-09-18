@@ -30,9 +30,13 @@ jobs:
 
       - name: Run Tests
         run: |
+          fuser -k 4173/tcp &&
           pnpm run preview &
           sleep 3 && 
           pnpm run test
+
+      - name: Kill Port Used For Tests
+        run: fuser -k 4173/tcp
 
       - name: Upload Report
         uses: actions/upload-artifact@v3
