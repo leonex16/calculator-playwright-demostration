@@ -1,6 +1,6 @@
 name: upload_to_gh_pages
 
-on: pull_request
+on: push
 
 jobs:
   run_tests:
@@ -60,7 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          target_branch: gh-pages
+          target_branch: web-site-branch
           build_dir: dist
 
   deploy_report:
@@ -83,5 +83,5 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            target_branch: gh-pages
+            target_branch: report-branch
             build_dir: playwright-report
