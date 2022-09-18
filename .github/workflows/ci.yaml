@@ -1,0 +1,87 @@
+name: upload_to_gh_pages
+
+on: pull_request
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.2
+
+      - name: Install Dependencies
+        run: |
+          pnpm install
+          pnpm dlx playwright install --with-deps chrome
+
+      - name: Build Project
+        run: pnpm run build
+
+      - name: Run Tests
+        run: |
+          pnpm run preview &
+          pnpm run test
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: |
+            dist/
+            playwright-report/
+            trace.zip
+
+  deploy_calculator:
+    needs:
+      - run_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          target_branch: gh-pages
+          build_dir: dist
+
+  deploy_report:
+      needs:
+        - run_tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - uses: actions/download-artifact@v3
+          with:
+            name: artifacts
+
+        - name: Display structure of downloaded files
+          run: ls -R
+
+        - name: Deploy to GitHub Pages
+          uses: crazy-max/ghaction-github-pages@v3
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            target_branch: gh-pages
+            build_dir: playwright-report
