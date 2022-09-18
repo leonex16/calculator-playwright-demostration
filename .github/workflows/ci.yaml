@@ -55,7 +55,7 @@ jobs:
           name: artifacts
 
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls -l
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3
@@ -78,7 +78,7 @@ jobs:
             name: artifacts
 
         - name: Display structure of downloaded files
-          run: ls -R
+          run: ls -l
 
         - name: Deploy to GitHub Pages
           uses: crazy-max/ghaction-github-pages@v3
