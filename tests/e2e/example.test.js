@@ -11,7 +11,7 @@ test('My firstt e2e test', async ({ browser }) => {
 
     await context.tracing.start({ snapshots: true });
 
-    await page.goto('http://localhost:4173/');
+    await page.goto('/');
 
     // 5+9+6*9/2
     await page.locator('[aria-label="Five"]').click();

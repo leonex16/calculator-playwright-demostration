@@ -8,7 +8,7 @@ test.use({ headless: true });
 
 test.describe('Load Index Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:4173/');
+    await page.goto('/');
   });
 
   test('should render calculator\'s numbers', async ({ page }) => {
