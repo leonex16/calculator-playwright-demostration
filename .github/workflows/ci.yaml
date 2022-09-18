@@ -30,7 +30,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          fuser -k 4173/tcp &&
+          fuser -k 4173/tcp ||
           sleep 3 && 
           pnpm run preview &
           sleep 3 && 
