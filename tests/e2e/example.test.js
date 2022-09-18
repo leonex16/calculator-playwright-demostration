@@ -11,7 +11,7 @@ test('My firstt e2e test', async ({ browser }) => {
 
     await context.tracing.start({ snapshots: true });
 
-    await page.goto('/');
+    await page.goto('http://127.0.0.1:4173/calculator-playwright-demostration');
 
     // 5+9+6*9/2
     await page.locator('[aria-label="Five"]').click();

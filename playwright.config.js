@@ -40,7 +40,7 @@ const config = {
 
     headless: true,
 
-    baseURL: 'http://127.0.0.1:4173/calculator-playwright-demostration',
+    // baseURL: 'http://127.0.0.1:4173/calculator-playwright-demostration',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry'

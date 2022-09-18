@@ -8,7 +8,7 @@ test.use({ headless: true });
 
 test.describe('Load Index Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('http://127.0.0.1:4173/calculator-playwright-demostration');
   });
 
   test('should render calculator\'s numbers', async ({ page }) => {

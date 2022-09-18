@@ -7,7 +7,7 @@ const clickOpts = { delay: 200 };
 
 test.describe('Calculator Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('http://127.0.0.1:4173/calculator-playwright-demostration');
   });
 
   test('should show button clicked on calculator\'s visor', async ({ page }) => {
