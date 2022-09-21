@@ -36,9 +36,6 @@ jobs:
           sleep 3 && 
           pnpm run test
 
-      - name: Kill Port Used For Tests
-        run: fuser -k 4173/tcp
-
       - name: Upload Report
         uses: actions/upload-artifact@v3
         with:
@@ -51,6 +48,8 @@ jobs:
   deploy_calculator:
     needs:
       - run_tests
+
+    if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -59,9 +58,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: artifacts
-
-      - name: Display structure of downloaded files
-        run: ls -l
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3
@@ -82,9 +78,6 @@ jobs:
         - uses: actions/download-artifact@v3
           with:
             name: artifacts
-
-        - name: Display structure of downloaded files
-          run: ls -l
 
         - name: Deploy to GitHub Pages
           uses: crazy-max/ghaction-github-pages@v3
