@@ -7,11 +7,11 @@ test('My firstt e2e test', async ({ browser }) => {
   const page = await context.newPage();
 
   try {
+    await page.goto('http://127.0.0.1:4173/calculator-playwright-demostration');
+
     const calculatorVisor = page.locator('input[type="text"]');
 
     await context.tracing.start({ snapshots: true });
-
-    await page.goto('http://127.0.0.1:4173/calculator-playwright-demostration');
 
     // 5+9+6*9/2
     await page.locator('[aria-label="Five"]').click();
@@ -27,7 +27,7 @@ test('My firstt e2e test', async ({ browser }) => {
 
     const visorValue = await calculatorVisor.evaluate(($input) => $input.value);
 
-    expect(visorValue).toBe('49');
+    expect(visorValue).toBe('41');
   } finally {
     await context.tracing.stop({ path: 'trace.zip' });
   }
