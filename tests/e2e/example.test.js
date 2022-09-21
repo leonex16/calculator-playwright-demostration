@@ -27,7 +27,7 @@ test('My firstt e2e test', async ({ browser }) => {
 
     const visorValue = await calculatorVisor.evaluate(($input) => $input.value);
 
-    expect(visorValue).toBe('42');
+    expect(visorValue).toBe('49');
   } finally {
     await context.tracing.stop({ path: 'trace.zip' });
   }
